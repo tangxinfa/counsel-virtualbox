@@ -71,17 +71,17 @@
 (defun counsel--virtualbox-run (name)
   "Run virtualbox by NAME."
   (message "Run virtualbox %s" (propertize name 'face 'counsel-virtualbox-name))
-  (message "%s" (shell-command-to-string (format "vboxmanage startvm '%s'" name))))
+  (call-process-shell-command (concat "vboxmanage startvm '" name "' &") nil 0))
 
 (defun counsel--virtualbox-save (name)
   "Save virtualbox by NAME."
   (message "Save virtualbox %s" (propertize name 'face 'counsel-virtualbox-name))
-  (message "%s" (shell-command-to-string (format "vboxmanage controlvm '%s' savestate" name))))
+  (call-process-shell-command (concat "vboxmanage controlvm '" name "' savestate &") nil 0))
 
 (defun counsel--virtualbox-power-off (name)
   "Power off virtualbox by NAME."
   (message "Power off virtualbox %s" (propertize name 'face 'counsel-virtualbox-name))
-  (message "%s" (shell-command-to-string (format "vboxmanage controlvm '%s' poweroff" name))))
+  (call-process-shell-command (concat "vboxmanage controlvm '" name "' poweroff &") nil 0))
 
 (defun counsel--virtualbox-state-face (state)
   "Get face by STATE."
