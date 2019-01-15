@@ -127,14 +127,14 @@
           guest-os
           name)
       (while (re-search-backward "^State:\s*\\(.*\\)\s*(.*" nil t)
-        (setq state (trim-string (match-string 1)))
+        (setq state (string-trim (match-string 1)))
         (if (re-search-backward "^Guest OS:\s*\\(.*\\)" nil t)
-            (setq guest-os (trim-string (match-string 1)))
+            (setq guest-os (string-trim (match-string 1)))
           (signal 'error (list "Parsing virtualbox from output"
                                "No Guest OS found"
                                (buffer-string))))
         (if (re-search-backward "^Name:\s*\\(.*\\)" nil t)
-            (setq name (trim-string (match-string 1)))
+            (setq name (string-trim (match-string 1)))
           (signal 'error (list "Parsing virtualbox from output"
                                "No Name found"
                                (buffer-string))))
